@@ -16,4 +16,16 @@ defmodule PhoenixTrello.Router do
 
     get "*path", PageController, :index
   end
+
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
+  scope "/api", PhoenixTrello do
+    pipe_through :api
+
+    scope "/v1" do
+      post "/registrations", RegistrationController, :create
+    end
+  end
 end

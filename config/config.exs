@@ -25,3 +25,10 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+config :guardian, Guardian,
+  issuer: "PhoenixTrello",
+  ttl: { 3, :days },
+  verify_issuer: true,
+  secret_key: "t86JmKQSuiZhIRwBUL34MkdF6hJaoFy6Xezeb+1RKQvSOuClZhj2YX1hE5XAw4sg",
+  serializer: PhoenixTrello.GuardianSerializer
